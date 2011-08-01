@@ -38,7 +38,7 @@ def qr(a, overwrite_a=False, lwork=None, mode='full', pivoting=False):
         Whether or not factorization should include pivoting for rank-revealing
         qr decomposition. If pivoting, compute the decomposition
         :lm:`A P = Q R` as above, but where P is chosen such that the diagonal
-        of R is non-increasing.
+        of R is non-increasing. P represents the new column order of A.
 
     Returns
     -------
@@ -47,8 +47,9 @@ def qr(a, overwrite_a=False, lwork=None, mode='full', pivoting=False):
         ``mode='r'``.
     R : double or complex ndarray
         Of shape (M, N), or (K, N) for ``mode='economic'``.  ``K = min(M, N)``.
-    P : double or complex ndarray
-        Of shape (N, 1) for ``pivoting=True``. Not returned if
+    P : integer ndarray
+        Of shape (N,) for ``pivoting=True``.
+        Not returned if ``pivoting=False``.
 
     Raises LinAlgError if decomposition fails
 
